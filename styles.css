@@ -52,10 +52,9 @@ main {
   border: none;
 }
 
-/* media query for nav background color change */
+
 @media only screen and (max-width: 767px) {
 }
-/* END NAV */
 
 
 /* CONNECT W/ ME CSS */
@@ -126,6 +125,10 @@ main {
 
 .row {
   padding-bottom: 10px;
+}
+
+a {
+  color: purple;
 }
 
 
