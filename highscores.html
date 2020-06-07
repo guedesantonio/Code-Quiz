@@ -9,30 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Code-Quiz</title>
-
-  <!-- Boostrap Stylesheet -->
+  <title>Highscores-Code-Quiz</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-  <!-- Our own CSS stylesheet -->
   <link rel="stylesheet" href="/styles.css" media="screen">
 
 </head>
 
 <body>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="nav-link" href="/quizstart.html">View Highscores</a>
-      </div>
-      <ul class="nav navbar-nav">
-     <a>TEST</a>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Start of container -->
   <main class="container">
     <section class="row">
       <div class="col-md-2">
@@ -40,13 +24,14 @@
       <div class="col-md-8">
         <form class="block form-horizontal">
           <h1 class="block-header text-center">Highscores</h1>
-          <p class="text-center">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
-             answer wil penalize your scoretime by ten seconds!
-          </p>
+          <ul id="highscores-list"></ul>
           <hr />
           <section class="row">
             <div class="col-md-12 text-center">
-              <button class="submit-btn">Submit</button>
+              <ul class="list-inline">
+                <button class="submit-btn">Go back</button>
+                <button class="submit-btn">Clear Highscores</button>
+              </ul>
             </div>
           </section>
         </form>
