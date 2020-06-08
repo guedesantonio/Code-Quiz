@@ -2,6 +2,7 @@
 var startBtn = document.querySelector("#start-btn");
 var timerEl = document.getElementById("seconds");
 var timeInterval;
+var timeLeft = 150;
 
 // listener that when the btn start quiz is clicked activate function timerCountdown()
 startBtn.addEventListener("click", function (event) {
@@ -15,7 +16,6 @@ startBtn.addEventListener("click", function (event) {
 })
 // function timerCountdown() start the countdown and call function newquestion
 function timerCountdown() {
-  var timeLeft = 60;
 
   timeInterval = setInterval(function () {
     timerEl.textContent = timeLeft;
