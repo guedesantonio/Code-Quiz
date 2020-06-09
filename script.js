@@ -8,8 +8,8 @@ var q3El = document.getElementById("q3");
 var q4El = document.getElementById("q4");
 var q5El = document.getElementById("q5");
 var scoreEl = document.getElementById("score");
-var correctEl = document.getElementById("correct");
-var wrongEl = document.getElementById("wrong");
+var correctEl = document.querySelector(".correct");
+var wrongEl = document.querySelector(".correct");
 var questionsArray = [q1El, q2El, q3El, q4El, q5El];
 var questionCounter = 0;
 var timeInterval;
@@ -22,6 +22,7 @@ startBtn.addEventListener("click", function (event) {
 
   if (element.matches("button") === true) {
     timerCountdown()
+    newQuestion()
   }
 })
 // function timerCountdown() start the countdown and call function newquestion
@@ -30,7 +31,6 @@ function timerCountdown() {
   timeInterval = setInterval(function () {
     timerEl.textContent = timeLeft;
     timeLeft--;
-    newQuestion()
 
     if (timeLeft < 1) {
       timerEl.textContent = 0;
@@ -66,7 +66,7 @@ wrongEl.addEventListener("click", function (event) {
   var element = event.target;
 
   if (element.matches("button") === true) {
-    timerEl.textContent = timerEl.nodeValue - 10;
+    // timerEl.textContent = timerEl.nodeValue - 10;
     otherQuestion()
   }
 })
@@ -83,17 +83,6 @@ function otherQuestion() {
 }
 
 
-  // for (i=0,i<questionsArray.length,i++) {
-  //   var currentQuestion = questionsArray[i];
-  //   if (i=0) {
-  //   startEl.classList.add('d-none');
-  //   currentQuestion.classList.remove('d-none');
-  //   }
-  //   else {
-  //   lastQuestion = questionsArray[i-1]  
-  //     lastQuestion.classList.add('d-none');
-  //     currentQuestion.classList.remove('d-none'); 
-  //   }
 
 // function record score records the score on storage
 // function that when Highscore page is loaded adds whatever is on storage to Highscores
