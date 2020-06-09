@@ -10,7 +10,8 @@ var q5El = document.getElementById("q5");
 var scoreEl = document.getElementById("score");
 var correctEl = document.getElementById("correct");
 var wrongEl = document.getElementById("wrong");
-var questionsArray = [q1El, q2El, q3El, q4El, q5El]
+var questionsArray = [q1El, q2El, q3El, q4El, q5El];
+var questionCounter = 0;
 var timeInterval;
 var timeLeft = 150;
 
@@ -19,7 +20,6 @@ startBtn.addEventListener("click", function (event) {
   event.preventDefault();
   var element = event.target;
 
-  // If that element is a button...
   if (element.matches("button") === true) {
     timerCountdown()
   }
@@ -47,27 +47,42 @@ function newQuestion() {
   startEl.classList.add('d-none');
   q1El.classList.remove('d-none');
 
-  correctEl.addEventListener("click", function (event) {
-    event.preventDefault();
-    var element = event.target;
+}
 
-    // If that element is a button...
-    if (element.matches("button") === true) {
-      alert("Correct")
-    }
-  })
 
-  wrongEl.addEventListener("click", function (event) {
-    event.preventDefault();
-    var element = event.target;
+//correct question event listener
+correctEl.addEventListener("click", function (event) {
+  event.preventDefault();
+  var element = event.target;
 
-    // If that element is a button...
-    if (element.matches("button") === true) {
-      alert("Incorrect")
-    }
-  })  
+  if (element.matches("button") === true) {
+    otherQuestion()
+  }
+})
+
+//wrong question event listener
+wrongEl.addEventListener("click", function (event) {
+  event.preventDefault();
+  var element = event.target;
+
+  if (element.matches("button") === true) {
+    timerEl.textContent = timerEl.nodeValue - 10;
+    otherQuestion()
+  }
+})
+
+function otherQuestion() {
+
+  questionCounter++;
+  currentQuestion = questionsArray[questionCounter-1];
+  nextQuestion = questionsArray[questionCounter];
+
+  currentQuestion.classList.add('d-none');
+  nextQuestion.classList.remove('d-none');
 
 }
+
+
   // for (i=0,i<questionsArray.length,i++) {
   //   var currentQuestion = questionsArray[i];
   //   if (i=0) {
