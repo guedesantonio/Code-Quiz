@@ -8,8 +8,6 @@ var q3El = document.getElementById("q3");
 var q4El = document.getElementById("q4");
 var q5El = document.getElementById("q5");
 var scoreEl = document.getElementById("score");
-var correctEl = document.querySelector(".correct");
-var wrongEl = document.querySelector(".correct");
 var questionsArray = [q1El, q2El, q3El, q4El, q5El];
 var questionCounter = 0;
 var timeInterval;
@@ -49,32 +47,35 @@ function newQuestion() {
 
 }
 
-
-//correct question event listener
-correctEl.addEventListener("click", function (event) {
+// Event listener for wrong, right questions
+document.addEventListener("click", function (event) {
   event.preventDefault();
-  var element = event.target;
 
-  if (element.matches("button") === true) {
+  if (event.target.matches(".correct")) {
+    alert("cORRECT");
     otherQuestion()
-  }
-})
 
-//wrong question event listener
-wrongEl.addEventListener("click", function (event) {
-  event.preventDefault();
-  var element = event.target;
 
-  if (element.matches("button") === true) {
-    // timerEl.textContent = timerEl.nodeValue - 10;
+  } else if (event.target.matches(".wrong")) {
+    alert("wRONG");
     otherQuestion()
+
+
+  } else if (event.target.matches(".correctLast")) {
+    alert("cORRECT");
+    recordScore()
+
+  } else if (event.target.matches(".wrongLast")) {
+    alert("wRONG");
+    recordScore()
+
   }
-})
+  })
 
 function otherQuestion() {
 
   questionCounter++;
-  currentQuestion = questionsArray[questionCounter-1];
+  currentQuestion = questionsArray[questionCounter - 1];
   nextQuestion = questionsArray[questionCounter];
 
   currentQuestion.classList.add('d-none');
@@ -82,9 +83,17 @@ function otherQuestion() {
 
 }
 
+function recordScore() {
 
+
+
+  q5El.classList.add('d-none');
+  scoreEl.classList.remove('d-none');
+
+}
 
 // function record score records the score on storage
 // function that when Highscore page is loaded adds whatever is on storage to Highscores
 // listener that when the btn clear highscore is clicked clear Highscores
 
+// .foreach!!!!!!!!!!!!!!!!!!!!!!!!!
