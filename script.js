@@ -21,6 +21,7 @@ startBtn.addEventListener("click", function (event) {
   if (element.matches("button") === true) {
     timerCountdown()
     newQuestion()
+    timerEl.textContent = timeLeft;
   }
 })
 // function timerCountdown() start the countdown and call function newquestion
@@ -52,12 +53,12 @@ document.addEventListener("click", function (event) {
   event.preventDefault();
 
   if (event.target.matches(".correct")) {
-    alert("cORRECT");
+  
     otherQuestion()
 
 
   } else if (event.target.matches(".wrong")) {
-    alert("wRONG");
+   timeLeft= timeLeft - 10
     otherQuestion()
 
 
