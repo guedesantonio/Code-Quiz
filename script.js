@@ -8,10 +8,14 @@ var q3El = document.getElementById("q3");
 var q4El = document.getElementById("q4");
 var q5El = document.getElementById("q5");
 var scoreEl = document.getElementById("score");
+var hrEl = document.getElementById("hr");
+var correctEl = document.getElementById("correctP");
+var wrongEl = document.getElementById("wrongP");
 var questionsArray = [q1El, q2El, q3El, q4El, q5El];
 var questionCounter = 0;
 var timeInterval;
 var timeLeft = 150;
+var timeAnswerResult = 3;
 
 // listener that when the btn start quiz is clicked activate function timerCountdown()
 startBtn.addEventListener("click", function (event) {
@@ -53,28 +57,30 @@ document.addEventListener("click", function (event) {
   event.preventDefault();
 
   if (event.target.matches(".correct")) {
-  
+    correct()
     otherQuestion()
 
 
   } else if (event.target.matches(".wrong")) {
    timeLeft= timeLeft - 10
-    otherQuestion()
+   wrong() 
+   otherQuestion()
 
 
   } else if (event.target.matches(".correctLast")) {
-    alert("cORRECT");
+    correct()
     recordScore()
 
   } else if (event.target.matches(".wrongLast")) {
-    alert("wRONG");
+    timeLeft= timeLeft - 10
+    wrong() 
     recordScore()
 
   }
   })
 
 function otherQuestion() {
-
+  
   questionCounter++;
   currentQuestion = questionsArray[questionCounter - 1];
   nextQuestion = questionsArray[questionCounter];
@@ -90,6 +96,47 @@ function recordScore() {
 
   q5El.classList.add('d-none');
   scoreEl.classList.remove('d-none');
+
+}
+
+function correct() {
+  timeAnswerResult = 3;
+  timeInterval = setInterval(function () {
+
+    
+    timeAnswerResult--;
+    correctEl.classList.remove('d-none');
+    hrEl.classList.remove('d-none');
+
+
+    if (timeAnswerResult < 1) {
+      correctEl.classList.add('d-none');
+      hrEl.classList.add('d-none');
+      clearInterval(timeInterval);
+    }
+
+  }, 1000);
+
+
+}
+
+function wrong() {
+  timeAnswerResult = 3;
+  timeInterval = setInterval(function () {
+
+    
+    timeAnswerResult--;
+    wrongEl.classList.remove('d-none');
+    hrEl.classList.remove('d-none');
+
+
+    if (timeAnswerResult < 1) {
+      wrongEl.classList.add('d-none');
+      hrEl.classList.add('d-none');
+      clearInterval(timeInterval);
+    }
+
+  }, 1000);
 
 }
 
