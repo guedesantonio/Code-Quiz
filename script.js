@@ -8,14 +8,19 @@ var q3El = document.getElementById("q3");
 var q4El = document.getElementById("q4");
 var q5El = document.getElementById("q5");
 var scoreEl = document.getElementById("score");
+var scoreSecondsEl = document.getElementById("scoreSeconds");
 var hrEl = document.getElementById("hr");
 var correctEl = document.getElementById("correctP");
 var wrongEl = document.getElementById("wrongP");
+var initialsEl = document.getElementById("initials");
+var scoreListEl = document.getElementById("highscores-list");
 var questionsArray = [q1El, q2El, q3El, q4El, q5El];
 var questionCounter = 0;
 var timeInterval;
 var timeLeft = 150;
-var timeAnswerResult = 3;
+var timeAnswerResult = 2;
+var highscoresList = [];
+var score;
 
 // listener that when the btn start quiz is clicked activate function timerCountdown()
 startBtn.addEventListener("click", function (event) {
@@ -37,6 +42,7 @@ function timerCountdown() {
 
     if (timeLeft < 1) {
       timerEl.textContent = 0;
+      // recordScore();
       clearInterval(timeInterval);
     }
 
@@ -76,8 +82,13 @@ document.addEventListener("click", function (event) {
     wrong() 
     recordScore()
 
-  }
-  })
+  } else if (event.target.matches("#submit")) {
+   submitScore()
+
+  } else if (event.target.matches("#clear")) {
+ clearHighscores()
+ }
+})
 
 function otherQuestion() {
   
@@ -90,17 +101,8 @@ function otherQuestion() {
 
 }
 
-function recordScore() {
-
-
-
-  q5El.classList.add('d-none');
-  scoreEl.classList.remove('d-none');
-
-}
-
 function correct() {
-  timeAnswerResult = 3;
+  timeAnswerResult = 2;
   timeInterval = setInterval(function () {
 
     
@@ -121,7 +123,7 @@ function correct() {
 }
 
 function wrong() {
-  timeAnswerResult = 3;
+  timeAnswerResult = 2;
   timeInterval = setInterval(function () {
 
     
@@ -141,7 +143,60 @@ function wrong() {
 }
 
 // function record score records the score on storage
-// function that when Highscore page is loaded adds whatever is on storage to Highscores
-// listener that when the btn clear highscore is clicked clear Highscores
 
-// .foreach!!!!!!!!!!!!!!!!!!!!!!!!!
+
+function recordScore() {
+
+  q5El.classList.add('d-none');
+  scoreEl.classList.remove('d-none');
+  score = timerEl.textContent;
+  scoreSecondsEl.textContent = timeLeft;
+
+  
+}
+
+function submitScore() {
+  event.preventDefault();
+
+  var initials = initialsEl.value.trim();
+
+  // Return from function early if submitted initials is blank
+  if (initialsEl === "") {
+    return;
+  }
+
+  // Add new score and initials to scoreList and initiallist array
+ var highscore = {initials:score};
+ highscoresList.push(highscore);
+
+  // Store updated todos in localStorage, re-render the list
+  store();
+};
+
+function store() {
+  // Stringify and set "todos" key in localStorage to todos array
+  localStorage.setItem("highscoreList", JSON.stringify(highscoresList));
+ 
+}
+
+
+// function that when Highscore page is loaded adds whatever is on storage to Highscores
+
+
+for (var i = 0; i < highscoresList.length; i++) {
+  var highscores = highscoresList[i];
+
+  var li = document.createElement("li");
+  li.textContent = highscore;
+  li.setAttribute("data-index", i);
+  scoreListEl.appendChild(li);
+
+}
+
+
+
+
+// listener that when the btn clear highscore is clicked clear Highscores
+function clearHighscores() {
+highscoreList = [];
+}
