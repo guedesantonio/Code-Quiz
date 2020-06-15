@@ -21,7 +21,7 @@ var scoreListEl = document.getElementById("highscores-list");
 var questionsArray = [q1El, q2El, q3El, q4El, q5El];
 var questionCounter = 0;
 var timeInterval;
-var timeLeft = 150;
+var timeLeft;
 var highscoresList = JSON.parse(localStorage.getItem("highscoresList")) || [];
 var score;
 
@@ -31,6 +31,7 @@ startBtn.addEventListener("click", function (event) {
   var element = event.target;
 
   if (element.matches("button") === true) {
+    timeLeft = 150;
     timerCountdown()
     newQuestion()
     timerEl.textContent = timeLeft;
@@ -40,6 +41,7 @@ startBtn.addEventListener("click", function (event) {
 function timerCountdown() {
 
   timeInterval = setInterval(function () {
+    
     timerEl.textContent = timeLeft;
     timeLeft--;
 
@@ -175,46 +177,6 @@ function submitScore() {
 
   // Store updated highscoresList in localStorage
   localStorage.setItem("highscoresList", JSON.stringify(highscoresList));
+  window.location.href = "./highscores.html"
+
 };
-
-//HIGHSCORE PAGE FUNCTIONS ???? how to load them only on page Highscore
-
-// function that when Highscore page is loaded adds whatever is on storage to Highscores
-
-// init();
-
-// function init() {
-//   // Get stored highscoresList from localStorage
-//   // Parsing the JSON string to an object
-//   var storedScores = JSON.parse(localStorage.getItem("highscoresList"));
-
-//   // If highscoresList were retrieved from localStorage, update the highscores array to it
-//   if (storedScores !== null) {
-//     highscoresList = storedScores;
-//   }
-
-//   // Render todos to the DOM
-//   renderScores();
-// }
-
-// function renderScores() {
-//   // Clear scoreListEl element
-//   scoreListEl.innerHTML = "";
-
-//   // Render a new li for each highscore
-
-//   for (var i = 0; i < highscoresList.length; i++) {
-//     var highscores = highscoresList[i];
-  
-//     var li = document.createElement("li");
-//     li.textContent = highscore;
-//     li.setAttribute("data-index", i);
-//     scoreListEl.appendChild(li);
-  
-//   }
-// }
-
-// // listener that when the btn clear highscore is clicked clear Highscores
-// function clearHighscores() {
-//   highscoreList = [];
-//   }
