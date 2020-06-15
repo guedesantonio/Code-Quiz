@@ -2,6 +2,7 @@
 var startBtn = document.querySelector("#start-btn");
 var timerEl = document.getElementById("seconds");
 var startEl = document.getElementById("start");
+var questionsEl = document.getElementById("questions");
 var q1El = document.getElementById("q1");
 var q2El = document.getElementById("q2");
 var q3El = document.getElementById("q3");
@@ -21,8 +22,7 @@ var questionsArray = [q1El, q2El, q3El, q4El, q5El];
 var questionCounter = 0;
 var timeInterval;
 var timeLeft = 150;
-var timeAnswerResult = 2;
-var highscoresList = [];
+var highscoresList = JSON.parse(localStorage.getItem("highscoresList")) || [];
 var score;
 
 // listener that when the btn start quiz is clicked activate function timerCountdown()
@@ -45,8 +45,8 @@ function timerCountdown() {
 
     if (timeLeft < 1) {
       timerEl.textContent = 0;
-      // recordScore();
       clearInterval(timeInterval);
+      // ???????????????
     }
 
   }, 1000);
@@ -75,7 +75,7 @@ function otherQuestion() {
 }
 
 // Event listener for wrong, correct questions, submit button, clear highscores
-document.addEventListener("click", function (event) {
+questionsEl.addEventListener("click", function (event) {
   event.preventDefault();
 
   if (event.target.matches(".correct")) {
@@ -85,17 +85,21 @@ document.addEventListener("click", function (event) {
 
   } else if (event.target.matches(".wrong")) {
    timeLeft= timeLeft - 10
+   timerEl.textContent = timeLeft;
    wrong() 
    otherQuestion()
 
 
   } else if (event.target.matches(".correctLast")) {
     correct()
+    clearInterval(timeInterval);
     recordScore()
 
   } else if (event.target.matches(".wrongLast")) {
     timeLeft= timeLeft - 10
+    timerEl.textContent = timeLeft;
     wrong() 
+    clearInterval(timeInterval);
     recordScore()
 
   } else if (event.target.matches("#submit")) {
@@ -106,45 +110,34 @@ document.addEventListener("click", function (event) {
  }
 })
 
+scoreEl.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  if (event.target.matches("#submit")) {
+   submitScore()
+ }
+})
+
+
 // functions correct and wrong adding penalties and informing the user
 function correct() {
-  timeAnswerResult = 2;
-  timeInterval = setInterval(function () {
+  correctEl.classList.remove('d-none');
+  hrEl.classList.remove('d-none');
 
-    
-    timeAnswerResult--;
-    correctEl.classList.remove('d-none');
-    hrEl.classList.remove('d-none');
-
-
-    if (timeAnswerResult < 1) {
+  setTimeout(function () {
       correctEl.classList.add('d-none');
       hrEl.classList.add('d-none');
-      clearInterval(timeInterval);
-    }
-
   }, 1000);
-
 }
 
 function wrong() {
-  timeAnswerResult = 2;
-  timeInterval = setInterval(function () {
+  wrongEl.classList.remove('d-none');
+  hrEl.classList.remove('d-none');
 
-    
-    timeAnswerResult--;
-    wrongEl.classList.remove('d-none');
-    hrEl.classList.remove('d-none');
-
-
-    if (timeAnswerResult < 1) {
+  setTimeout(function () {
       wrongEl.classList.add('d-none');
       hrEl.classList.add('d-none');
-      clearInterval(timeInterval);
-    }
-
   }, 1000);
-
 }
 
 // function recordScore to show the user his score
@@ -156,7 +149,7 @@ function recordScore() {
   scoreEl.classList.remove('d-none');
   score = timerEl.textContent;
   scoreSecondsEl.textContent = timeLeft;
-
+  
   
 }
 
@@ -173,31 +166,55 @@ function submitScore() {
   }
 
   // Add new score and initials to scoreList and initiallist array
- var highscore = {initials:score};
+ var highscore = {
+  initials: initials, 
+  score: score
+};
+
  highscoresList.push(highscore);
 
   // Store updated highscoresList in localStorage
   localStorage.setItem("highscoresList", JSON.stringify(highscoresList));
 };
 
+//HIGHSCORE PAGE FUNCTIONS ???? how to load them only on page Highscore
 
 // function that when Highscore page is loaded adds whatever is on storage to Highscores
 
+// init();
 
-for (var i = 0; i < highscoresList.length; i++) {
-  var highscores = highscoresList[i];
+// function init() {
+//   // Get stored highscoresList from localStorage
+//   // Parsing the JSON string to an object
+//   var storedScores = JSON.parse(localStorage.getItem("highscoresList"));
 
-  var li = document.createElement("li");
-  li.textContent = highscore;
-  li.setAttribute("data-index", i);
-  scoreListEl.appendChild(li);
+//   // If highscoresList were retrieved from localStorage, update the highscores array to it
+//   if (storedScores !== null) {
+//     highscoresList = storedScores;
+//   }
 
-}
+//   // Render todos to the DOM
+//   renderScores();
+// }
 
+// function renderScores() {
+//   // Clear scoreListEl element
+//   scoreListEl.innerHTML = "";
 
+//   // Render a new li for each highscore
 
+//   for (var i = 0; i < highscoresList.length; i++) {
+//     var highscores = highscoresList[i];
+  
+//     var li = document.createElement("li");
+//     li.textContent = highscore;
+//     li.setAttribute("data-index", i);
+//     scoreListEl.appendChild(li);
+  
+//   }
+// }
 
-// listener that when the btn clear highscore is clicked clear Highscores
-function clearHighscores() {
-highscoreList = [];
-}
+// // listener that when the btn clear highscore is clicked clear Highscores
+// function clearHighscores() {
+//   highscoreList = [];
+//   }

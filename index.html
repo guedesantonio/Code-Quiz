@@ -20,7 +20,7 @@
 
   <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
-      <a class="nav-link" href="/highscores.html">View Highscores</a>
+      <a class="nav-link" href="./highscores.html">View Highscores</a>
       <ul class="list-inline">
         <li class="list-inline-item">Time:</li>
         <li class="list-inline-item" id="seconds">0</li>
@@ -35,6 +35,7 @@
       </div>
       <div class="col-md-8">
         <form class="block form-horizontal">
+
           <section id=start class="">
             <h1 class="block-header text-center">Coding Quiz Challenge</h1>
             <p class="text-center">Try to answer the following code-related questions within the time limit. Keep in
@@ -48,127 +49,131 @@
               </div>
             </section>
           </section>
-          <section id=q1 class="d-none">
-            <h1 class="block-header">Commonly used data types DO NOT include:</h1>
-            <hr />
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong" >1. Strings</button>
-              </div>
+
+          <section id="questions">
+            <section id=q1 class="d-none">
+              <h1 class="block-header">Commonly used data types DO NOT include:</h1>
+              <hr />
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong" >1. Strings</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong" >2. Booleans</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn correct" >3. Alerts</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">4. Numbers</button>
+                </div>
+              </section>
             </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong" >2. Booleans</button>
-              </div>
+            <section id=q2 class="d-none">
+              <h1 class="block-header">Arrays in JavaScript can be used to store _____.</h1>
+              <hr />
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">1. Numbers and strings</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">2. Other arrays</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">3. Booleans</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn correct">4. All of the above</button>
+                </div>
+              </section>
             </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn correct" >3. Alerts</button>
-              </div>
+            <section id=q3 class="d-none">
+              <h1 class="block-header">The condition in an if/else statement is enclosed within ______.</h1>
+              <hr />
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">1. Quotes</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">2. Curly brackets</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn correct">3. Parentheses</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">4. Square brackets</button>
+                </div>
+              </section>
             </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">4. Numbers</button>
-              </div>
+            <section id=q4 class="d-none">
+              <h1 class="block-header">String values must be enclosed within _____ when being assigned to variables.</h1>
+              <hr />
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">1. Commas</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">2. Curly brackets</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn correct">3. Quotes</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrong">4. Parentheses</button>
+                </div>
+              </section>
+            </section>
+            <section id=q5 class="d-none">
+              <h1 class="block-header">A very useful tool used during development and debugging for printing content to
+                the debugger is:</h1>
+              <hr />
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrongLast">1. JavaScript</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrongLast">2. Terminal / bash</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn wrongLast">3. For loops</button>
+                </div>
+              </section>
+              <section class="row">
+                <div class="col-md-12">
+                  <button class="submit-btn correctLast">4. Console.log</button>
+                </div>
+              </section>
             </section>
           </section>
-          <section id=q2 class="d-none">
-            <h1 class="block-header">Arrays in JavaScript can be used to store _____.</h1>
-            <hr />
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">1. Numbers and strings</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">2. Other arrays</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">3. Booleans</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn correct">4. All of the above</button>
-              </div>
-            </section>
-          </section>
-          <section id=q3 class="d-none">
-            <h1 class="block-header">The condition in an if/else statement is enclosed within ______.</h1>
-            <hr />
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">1. Quotes</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">2. Curly brackets</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn correct">3. Parentheses</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">4. Square brackets</button>
-              </div>
-            </section>
-          </section>
-          <section id=q4 class="d-none">
-            <h1 class="block-header">String values must be enclosed within _____ when being assigned to variables.</h1>
-            <hr />
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">1. Commas</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">2. Curly brackets</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn correct">3. Quotes</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrong">4. Parentheses</button>
-              </div>
-            </section>
-          </section>
-          <section id=q5 class="d-none">
-            <h1 class="block-header">A very useful tool used during development and debugging for printing content to
-              the debugger is:</h1>
-            <hr />
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrongLast">1. JavaScript</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrongLast">2. Terminal / bash</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn wrongLast">3. For loops</button>
-              </div>
-            </section>
-            <section class="row">
-              <div class="col-md-12">
-                <button class="submit-btn correctLast">4. Console.log</button>
-              </div>
-            </section>
-          </section>
+
           <section id=score class="d-none">
             <h1 class="block-header">All done!</h1>
             <a>Your final score is </a>
@@ -181,6 +186,7 @@
               </div>
             </section>
           </section>
+
           <hr class="d-none" id="hr">
           <p class="d-none " id="correctP">CORRECT!</p>
           <p class="d-none" id =  "wrongP">WRONG!</p>
