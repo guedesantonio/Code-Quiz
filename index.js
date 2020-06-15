@@ -14,7 +14,6 @@ var hrEl = document.getElementById("hr");
 var correctEl = document.getElementById("correctP");
 var wrongEl = document.getElementById("wrongP");
 var initialsEl = document.getElementById("initials");
-var scoreListEl = document.getElementById("highscores-list");
 
 // add necessary variables
 
@@ -169,8 +168,8 @@ function submitScore() {
 
   // Add new score and initials to scoreList and initiallist array
  var highscore = {
-  initials: initials, 
-  score: score
+  Initials: initials, 
+  Score: score
 };
 
  highscoresList.push(highscore);
