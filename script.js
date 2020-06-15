@@ -14,6 +14,9 @@ var correctEl = document.getElementById("correctP");
 var wrongEl = document.getElementById("wrongP");
 var initialsEl = document.getElementById("initials");
 var scoreListEl = document.getElementById("highscores-list");
+
+// add necessary variables
+
 var questionsArray = [q1El, q2El, q3El, q4El, q5El];
 var questionCounter = 0;
 var timeInterval;
@@ -48,7 +51,7 @@ function timerCountdown() {
 
   }, 1000);
 }
-// when time is up call function recordscore && Question counter call record score
+// ?????? when time is up call function recordscore && Question counter call record score
 
 // newquestion function that gives the screen a new question 
 function newQuestion() {
@@ -58,7 +61,20 @@ function newQuestion() {
 
 }
 
-// Event listener for wrong, right questions
+// function other question  that gives the screen another question 
+
+function otherQuestion() {
+  
+  questionCounter++;
+  currentQuestion = questionsArray[questionCounter - 1];
+  nextQuestion = questionsArray[questionCounter];
+
+  currentQuestion.classList.add('d-none');
+  nextQuestion.classList.remove('d-none');
+
+}
+
+// Event listener for wrong, correct questions, submit button, clear highscores
 document.addEventListener("click", function (event) {
   event.preventDefault();
 
@@ -90,17 +106,7 @@ document.addEventListener("click", function (event) {
  }
 })
 
-function otherQuestion() {
-  
-  questionCounter++;
-  currentQuestion = questionsArray[questionCounter - 1];
-  nextQuestion = questionsArray[questionCounter];
-
-  currentQuestion.classList.add('d-none');
-  nextQuestion.classList.remove('d-none');
-
-}
-
+// functions correct and wrong adding penalties and informing the user
 function correct() {
   timeAnswerResult = 2;
   timeInterval = setInterval(function () {
@@ -118,7 +124,6 @@ function correct() {
     }
 
   }, 1000);
-
 
 }
 
@@ -142,7 +147,7 @@ function wrong() {
 
 }
 
-// function record score records the score on storage
+// function recordScore to show the user his score
 
 
 function recordScore() {
@@ -154,6 +159,8 @@ function recordScore() {
 
   
 }
+
+// function submit score to add the user initials and score to the local storage
 
 function submitScore() {
   event.preventDefault();
@@ -169,15 +176,9 @@ function submitScore() {
  var highscore = {initials:score};
  highscoresList.push(highscore);
 
-  // Store updated todos in localStorage, re-render the list
-  store();
+  // Store updated highscoresList in localStorage
+  localStorage.setItem("highscoresList", JSON.stringify(highscoresList));
 };
-
-function store() {
-  // Stringify and set "todos" key in localStorage to todos array
-  localStorage.setItem("highscoreList", JSON.stringify(highscoresList));
- 
-}
 
 
 // function that when Highscore page is loaded adds whatever is on storage to Highscores
