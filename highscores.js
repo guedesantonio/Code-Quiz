@@ -16,24 +16,9 @@ function renderScores() {
   // Render a new li for each highscore
 
   for (var i = 0; i < highscoresList.length; i++) {
-    var highscore = JSON.stringify(highscoresList[i]);
-    highscore = highscore.replace("Initials","");
-    highscore = highscore.replace("Score","");
-    highscore = highscore.replace(":","");
-    highscore = highscore.replace(",","");
-    highscore = highscore.replace("{","");
-    highscore = highscore.replace("}","");
-    highscore = highscore.replace("\"","");
-    highscore = highscore.replace("\"","");
-    highscore = highscore.replace("\"","");
-    highscore = highscore.replace("\"","");
-    highscore = highscore.replace("\"","");
-    highscore = highscore.replace("\"","");
-    highscore = highscore.replace("\"","");
-    highscore = highscore.replace("\""," seconds");
-    highscore = highscore.replace(":"," = ");
+    let highscore = highscoresList[i]
     var li = document.createElement("li");
-    li.textContent = highscore;
+    li.textContent = highscore.Initials + " = " + highscore.Score;
     li.setAttribute("data-index", i);
     li.setAttribute("class", "submit-btn");
     scoreListEl.appendChild(li);

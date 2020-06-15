@@ -47,12 +47,12 @@ function timerCountdown() {
     if (timeLeft < 1) {
       timerEl.textContent = 0;
       clearInterval(timeInterval);
-      // ???????????????
+      
     }
 
   }, 1000);
 }
-// ?????? when time is up call function recordscore && Question counter call record score
+
 
 // newquestion function that gives the screen a new question 
 function newQuestion() {
