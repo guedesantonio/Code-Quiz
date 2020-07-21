@@ -21,3 +21,4 @@ Add your initials to save your score in the end.
 
 ## Project status
 Completed.
+![Deployed Link](https://guedesantonio.github.io/Code-Quiz/)
